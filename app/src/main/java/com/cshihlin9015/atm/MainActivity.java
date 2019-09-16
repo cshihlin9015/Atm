@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // 要接受返回的資料，要覆寫這一個方法
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == REQUEST_LOGIN) {
