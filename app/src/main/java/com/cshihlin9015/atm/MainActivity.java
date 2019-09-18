@@ -9,6 +9,8 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.view.Menu;
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     boolean logon = false; //判斷是否有登入
     private static final int REQUEST_LOGIN = 100;
+    String[] functions = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,16 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        // Recycler
+        RecyclerView recyclerView = findViewById(R.id.recycler);
+        // 初始化
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //adapter
+        FunctionAdapter adapter = new FunctionAdapter(this);
+        recyclerView.setAdapter(adapter);
     }
 
     // 要接受返回的資料，要覆寫這一個方法
